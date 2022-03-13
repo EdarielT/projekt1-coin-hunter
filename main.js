@@ -60,3 +60,36 @@ let coinsPosition = () => {
 		}
 	}
 }
+
+//players movements, arrow keys and WASD are allowed, the rest is ignored
+
+function moving(event) {
+	switch (event.key) {
+		case 'ArrowUp':
+		case 'w':
+			player.src='obrazky/panacek-nahoru.png';
+			playerX -= 5;
+			playersPosition();	
+			break;
+		case 'ArrowDown':
+		case 's':
+			player.src='obrazky/panacek.png';	
+			playerX += 5;
+			playersPosition();
+			break;
+		case 'ArrowLeft':
+		case 'a':
+			player.src='obrazky/panacek-vlevo.png';	
+			playerY -= 5;
+			playersPosition();
+			break;
+		case 'ArrowRight':
+		case 'd':
+			player.src='obrazky/panacek-vpravo.png';
+			playerY += 5;
+			playersPosition();
+			break;
+		default:
+			//do nothing				
+	}
+}
