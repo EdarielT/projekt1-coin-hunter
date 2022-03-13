@@ -39,11 +39,11 @@ let playersPosition = () => {
 
 //coin's random position
 let coinsPosition = () => {
-	coinY = Math.floor(Math.random()*window.innerHeight+0.5*coinHeight);
-	coinX = Math.floor(Math.random()*window.innerWidth+0.5*coinWidth);
+	coinY = Math.floor(Math.random()*window.innerHeight);
+	coinX = Math.floor(Math.random()*window.innerWidth);
 	//making sure coin doesn't appear outside the viewport
-	let windowBorderHeight = window.innerHeight-0.5*coinHeight;
-	let windowBorderWidth = window.innerWidth-0.5*coinWidth;
+	let windowBorderHeight = window.innerHeight-coinHeight;
+	let windowBorderWidth = window.innerWidth-coinWidth;
 	if (coinY <= windowBorderHeight && coinX <= windowBorderWidth) {
 		coin.style.top = coinY + 'px';
 		coin.style.left = coinX + 'px';
