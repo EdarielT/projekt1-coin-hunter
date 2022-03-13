@@ -22,8 +22,8 @@ let pageLoading = () => {
 	coinHeight = coin.naturalHeight;
 
 	//player's initial position
-	playerX = 0.5*window.innerHeight - 0.5*playerHeight;
-	playerY = 0.5*window.innerWidth - 0.5*playerWidth;
+	playerY = 0.5*window.innerHeight - 0.5*playerHeight;
+	playerX = 0.5*window.innerWidth - 0.5*playerWidth;
 	playersPosition();
 	
 
@@ -33,30 +33,30 @@ let pageLoading = () => {
 
 //pleyer's position
 let playersPosition = () => {
-	player.style.top = playerX + 'px';
-	player.style.left = playerY + 'px';
+	player.style.top = playerY + 'px';
+	player.style.left = playerX + 'px';
 }
 
 //coin's random position
 let coinsPosition = () => {
-	coinX = Math.floor(Math.random()*window.innerHeight+0.5*coinHeight);
-	coinY = Math.floor(Math.random()*window.innerWidth+0.5*coinWidth);
+	coinY = Math.floor(Math.random()*window.innerHeight+0.5*coinHeight);
+	coinX = Math.floor(Math.random()*window.innerWidth+0.5*coinWidth);
 	//making sure coin doesn't appear outside the viewport
 	let windowBorderHeight = window.innerHeight-0.5*coinHeight;
 	let windowBorderWidth = window.innerWidth-0.5*coinWidth;
-	if (coinX <= windowBorderHeight && coinY <= windowBorderWidth) {
-		coin.style.top = coinX + 'px';
-		coin.style.left = coinY + 'px';
+	if (coinY <= windowBorderHeight && coinX <= windowBorderWidth) {
+		coin.style.top = coinY + 'px';
+		coin.style.left = coinX + 'px';
 	} else {
-		if (coinX > windowBorderHeight && coinY <= windowBorderWidth) {
-			coin.style.top = coinX-coinHeight + 'px';
-			coin.style.left = coinY + 'px';
-		} else if (coinX <= windowBorderHeight && coinY > windowBorderWidth) {
-			coin.style.top = coinX + 'px';
-			coin.style.left = coinY-coinWidth + 'px';
+		if (coinY > windowBorderHeight && coinX <= windowBorderWidth) {
+			coin.style.top = coinY-coinHeight + 'px';
+			coin.style.left = coinX + 'px';
+		} else if (coinY <= windowBorderHeight && coinX > windowBorderWidth) {
+			coin.style.top = coinY + 'px';
+			coin.style.left = coinX-coinWidth + 'px';
 		} else {
-			coin.style.top = coinX-coinHeight + 'px';
-			coin.style.left = coinY-coinWidth + 'px';
+			coin.style.top = coinY-coinHeight + 'px';
+			coin.style.left = coinX-coinWidth + 'px';
 		}
 	}
 }
@@ -68,28 +68,27 @@ function moving(event) {
 		case 'ArrowUp':
 		case 'w':
 			player.src='obrazky/panacek-nahoru.png';
-			playerX -= 5;
-			playersPosition();	
+			playerY -= 5;	
 			break;
 		case 'ArrowDown':
 		case 's':
 			player.src='obrazky/panacek.png';	
-			playerX += 5;
-			playersPosition();
+			playerY += 5;
 			break;
 		case 'ArrowLeft':
 		case 'a':
 			player.src='obrazky/panacek-vlevo.png';	
-			playerY -= 5;
-			playersPosition();
+			playerX -= 5;
 			break;
 		case 'ArrowRight':
 		case 'd':
 			player.src='obrazky/panacek-vpravo.png';
-			playerY += 5;
-			playersPosition();
+			playerX += 5;
 			break;
 		default:
 			//do nothing				
 	}
+
+	playersPosition();
 }
+
