@@ -26,7 +26,6 @@ let pageLoading = () => {
 	playerX = 0.5*window.innerWidth - 0.5*playerWidth;
 	playersPosition();
 	
-
 	//coin's initial position
 	coinsPosition();
 }
@@ -64,6 +63,9 @@ let coinsPosition = () => {
 //players movements, arrow keys and WASD are allowed, the rest is ignored
 
 function moving(event) {
+	//saving playerX and playerY values from previous step for non-allowed range case, see if-else statement
+	let historyPlayerX = playerX;
+	let historyPlayerY = playerY;
 	switch (event.key) {
 		case 'ArrowUp':
 		case 'w':
@@ -89,7 +91,17 @@ function moving(event) {
 			//do nothing				
 	}
 
-	playersPosition();
+	//making sure the player doesn't go outside the window
+	if (!(playerX <= 0 || playerX >= window.innerWidth-playerWidth ||
+		playerY <= 0 || playerY >= window.innerHeight-playerHeight)) {
+			playersPosition();
+		} else {
+			//stopping the movement and preventing of increasing of playerX and playerY values at non-allowed range
+			playerX -= (playerX - historyPlayerX);
+			playerY -= (playerY - historyPlayerY);
+		}
+
+		//checking if player got the coin
 	catchTheCoin();
 }
 
