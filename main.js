@@ -21,15 +21,24 @@ let pageLoading = () => {
 	coinWidth = coin.naturalWidth;
 	coinHeight = coin.naturalHeight;
 
-	//player's position
+	//player's initial position
 	playerX = 0.5*window.innerHeight - 0.5*playerHeight;
 	playerY = 0.5*window.innerWidth - 0.5*playerWidth;
-	player.style.top = playerX + 'px';
-	player.style.left = playerY + 'px';
+	playersPosition();
 	
 
-	//coin's position
-	//random position
+	//coin's initial position
+	coinsPosition();
+}
+
+//pleyer's position
+let playersPosition = () => {
+	player.style.top = playerX + 'px';
+	player.style.left = playerY + 'px';
+}
+
+//coin's random position
+let coinsPosition = () => {
 	coinX = Math.floor(Math.random()*window.innerHeight+0.5*coinHeight);
 	coinY = Math.floor(Math.random()*window.innerWidth+0.5*coinWidth);
 	//making sure coin doesn't appear outside the viewport
