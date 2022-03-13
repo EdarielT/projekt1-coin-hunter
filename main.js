@@ -90,5 +90,16 @@ function moving(event) {
 	}
 
 	playersPosition();
+	catchTheCoin();
 }
 
+//catching the coin = > coin changes its position
+let catchTheCoin = () => {
+ 	if (!(playerX + 0.5*playerWidth < coinX || 
+		coinX + 0.5*coinWidth < playerX || 
+		playerY + 0.5*playerHeight < coinY || 
+		coinY + 0.5*coinHeight < playerY)) {
+
+		coinsPosition();
+	 }
+ }
