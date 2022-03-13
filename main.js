@@ -111,7 +111,7 @@ function moving(event) {
 	catchTheCoin();
 }
 
-//catching the coin = > coin changes its position
+//catching the coin = > coin changes its position, points go up
 let catchTheCoin = () => {
 	coinSound = document.getElementById('zvukmince');
 
@@ -123,6 +123,22 @@ let catchTheCoin = () => {
 		points ++;
 		document.getElementById('score').innerHTML = points;
 		coinSound.play();
+		//checking if won, getting the coin on the new position
+		winning();
 		coinsPosition();
+	 }
+ }
+
+ //winning after catching 5 coins
+ let winning = () => {
+	 if (points > 5) {
+		 //winning sound plays
+		winSound = document.getElementById('zvukfanfara');
+		winSound.play();
+		//winning allert
+		alert('You won!');
+		//game starts over
+		points = 0;
+		document.getElementById('score').innerHTML = points;
 	 }
  }
