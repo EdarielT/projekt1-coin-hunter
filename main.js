@@ -10,6 +10,7 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 let player, playerWidth, playerHeight, playerX, playerY;
 let coin, coinWidth, coinHeight, coinX, coinY;
+let music, coinSound, winSound;
 
 let pageLoading = () => {
 	player = document.getElementById('panacek');
@@ -63,6 +64,9 @@ let coinsPosition = () => {
 //players movements, arrow keys and WASD are allowed, the rest is ignored
 
 function moving(event) {
+	//music starts with the first movement
+	music = document.getElementById('hudba');
+	music.play();
 	//saving playerX and playerY values from previous step for non-allowed range case, see if-else statement
 	let historyPlayerX = playerX;
 	let historyPlayerY = playerY;
@@ -107,11 +111,14 @@ function moving(event) {
 
 //catching the coin = > coin changes its position
 let catchTheCoin = () => {
+	coinSound = document.getElementById('zvukmince');
+
  	if (!(playerX + 0.5*playerWidth < coinX || 
 		coinX + 0.5*coinWidth < playerX || 
 		playerY + 0.5*playerHeight < coinY || 
 		coinY + 0.5*coinHeight < playerY)) {
 
+		coinSound.play();
 		coinsPosition();
 	 }
  }
