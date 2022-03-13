@@ -131,7 +131,7 @@ let catchTheCoin = () => {
 
  //winning after catching 5 coins
  let winning = () => {
-	 if (points > 5) {
+	 if (points === 5) {
 		 //winning sound plays
 		winSound = document.getElementById('zvukfanfara');
 		winSound.play();
