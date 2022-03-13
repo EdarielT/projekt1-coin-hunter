@@ -11,10 +11,12 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 let player, playerWidth, playerHeight, playerX, playerY;
 let coin, coinWidth, coinHeight, coinX, coinY;
 let music, coinSound, winSound;
+let points;
 
 let pageLoading = () => {
 	player = document.getElementById('panacek');
 	coin = document.getElementById('mince');
+	points = 0;
 	
 	//getting width and heights of the elements
 	playerWidth = player.naturalWidth;
@@ -113,11 +115,13 @@ function moving(event) {
 let catchTheCoin = () => {
 	coinSound = document.getElementById('zvukmince');
 
- 	if (!(playerX + 0.5*playerWidth < coinX || 
-		coinX + 0.5*coinWidth < playerX || 
-		playerY + 0.5*playerHeight < coinY || 
-		coinY + 0.5*coinHeight < playerY)) {
+ 	if (!(playerX + playerWidth < coinX || 
+		coinX + coinWidth < playerX || 
+		playerY + playerHeight < coinY || 
+		coinY + coinHeight < playerY)) {
 
+		points ++;
+		document.getElementById('score').innerHTML = points;
 		coinSound.play();
 		coinsPosition();
 	 }
